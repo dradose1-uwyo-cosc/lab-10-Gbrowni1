@@ -13,11 +13,10 @@
 from hashlib import sha256 
 from pathlib import Path
 
+print(type(lines))
 def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
-
-
 
 # Files and Exceptions
 
@@ -30,7 +29,7 @@ def get_hash(to_hash):
 #   - You can use the provided `get_hash()` function to generate the hashes.
 #   - Be careful, as "hello" and "hello " would generate a different hash.
 
-# You will need to include a try-except-catch block in your code.
+# You will need to include a try-except-else block in your code.
 # - The reading of files needs to occur in the try blocks.
 
 
@@ -43,3 +42,19 @@ def get_hash(to_hash):
 # Hash each individual password and compare it against the stored hash.
 # - When you find the match, print the plaintext version of the password.
 # - End your loop.
+def crackin():
+    try:
+        with open("rockyou.txt", "r") as file:
+        path = Path("rockyou.txt")
+        contains = path.readtext(
+        lines = contains.splitlines()
+        )
+    except:
+        print('File not found')
+    else: 
+        print('File found, start coding')
+
+crackin()
+Path = Path('Your.file.name')
+
+#**1 for loop after turning into an array**
