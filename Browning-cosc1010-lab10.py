@@ -1,19 +1,16 @@
-# Your Name Here
+# Grant Browning
 # UWYO COSC 1010
-# Submission Date
+# 11/24/24
 # Lab XX
-# Lab Section: 
+# Lab Section: Austin 
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# 
 
 #import modules you will need 
 
 from hashlib import sha256 
 from pathlib import Path
 
-print(type(lines))
 def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
@@ -42,19 +39,60 @@ def get_hash(to_hash):
 # Hash each individual password and compare it against the stored hash.
 # - When you find the match, print the plaintext version of the password.
 # - End your loop.
-def crackin():
+def read_passlist(file_path: str) -> list:
+    """Reads list of passwords on rockyou.txt and returns them in listed string form."""
+    path = Path(file_path)
     try:
         with open("rockyou.txt", "r") as file:
-        path = Path("rockyou.txt")
-        contains = path.readtext(
-        lines = contains.splitlines()
-        )
+           contains = path.read_text()
+           passwords = contains.splitlines()
+           return passwords
+        
     except:
-        print('File not found')
-    else: 
-        print('File found, start coding')
+        print("Error: File not found.")
+        passwords = []
+        return passwords
+    
+def crackin(hash: str, rockyou: str):
+    """Crack hashed password by checking password list output in SHA-256"""
+    passwords = read_passlist("rockyou.txt")
 
-crackin()
-Path = Path('Your.file.name')
+    if not passwords:
+        print("No passwords in list")
+        
+        return None
 
+    print("Releasing the crackin")   
+
+    with open("hash", "l") as file:
+        given_hash = password.strip[0] in file 
+    
+    for password in passwords:
+        hashed_password = get_hash(password)
+
+        if hashed_password == hash: #something wrong here i think
+            print(f"Cracked. The password is {password}")
+            return password
+    
+    print("Password not found in list.")
+    return None
+
+crackin("hash", "rockyou.txt")
+
+def runner():
+    hash_path = Path(hash)
+    try:
+        with open("hash", "l") as file:
+           hash_contains = hash_path.read_text()
+           given_hash = hash_contains.splitlines(0)
+                   
+    except:
+        print("Error: File not found.")
+        given_hash = []
+        return given_hash
+
+ 
+    crackin(given_hash, "rockyou.txt")
+
+runner()
 #**1 for loop after turning into an array**
